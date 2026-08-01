@@ -39,11 +39,12 @@ export default function FavoritesPage() {
         </div>
       ) : (
         <FileTable
-          files={files}
-          onDownload={handleDownload}
-          onDelete={handleDelete}
-          onPreview={handlePreview}
-          onToggleFavorite={handleToggleFavorite}
+            files={files}
+            onDownload={handleDownload}
+            onDelete={handleDelete}
+            onPreview={handlePreview}
+            onToggleFavorite={handleToggleFavorite}
+            onShare={() => {}}
         />
       )}
 
