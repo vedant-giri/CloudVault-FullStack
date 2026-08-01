@@ -31,3 +31,5 @@ class User(Base):
         back_populates="owner",
         cascade="all, delete-orphan",
     )
+
+    

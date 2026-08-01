@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from sqlalchemy import DateTime, ForeignKey, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -38,6 +37,16 @@ class File(Base):
 
     size: Mapped[int] = mapped_column(
         Integer,
+        nullable=False,
+    )
+
+    is_favorite: Mapped[bool] = mapped_column(
+        default=False,
+        nullable=False,
+    )
+
+    is_deleted: Mapped[bool] = mapped_column(
+        default=False,
         nullable=False,
     )
 

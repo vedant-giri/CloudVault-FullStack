@@ -1,29 +1,86 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
-function LoginPage() {
-  return <h1 className="text-3xl font-bold">Login Page</h1>;
-}
+import AppLayout from "@/components/layout/AppLayout";
+import ProtectedRoute from "./ProtectedRoute";
 
-function RegisterPage() {
-  return <h1 className="text-3xl font-bold">Register Page</h1>;
-}
+import LoginPage from "../pages/Login/LoginPage";
+import RegisterPage from "../pages/Register/RegisterPage";
 
-function DashboardPage() {
-  return <h1 className="text-3xl font-bold">Dashboard</h1>;
-}
+import DashboardPage from "../pages/Dashboard/DashboardPage";
+import FilesPage from "../pages/Files/FilesPage";
+import FavoritesPage from "../pages/Favorites/FavoritesPage";
+import SharedPage from "../pages/Shared/SharedPage";
+import TrashPage from "../pages/Trash/TrashPage";
+import SettingsPage from "../pages/Settings/SettingsPage";
 
-function NotFoundPage() {
-  return <h1 className="text-3xl font-bold">404 - Page Not Found</h1>;
-}
+import NotFoundPage from "../pages/NotFound/NotFoundPage";
 
 export default function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Public Routes */}
         <Route path="/" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="*" element={<NotFoundPage />} />
+
+        {/* Protected Routes */}
+        <Route
+          element={
+            <ProtectedRoute>
+              <AppLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route
+            path="/dashboard"
+            element={<DashboardPage />}
+          />
+
+          <Route
+            path="/files"
+            element={<FilesPage />}
+          />
+
+          <Route
+            path="/favorites"
+            element={<FavoritesPage />}
+          />
+
+          <Route
+            path="/shared"
+            element={<SharedPage />}
+          />
+
+          <Route
+            path="/trash"
+            element={<TrashPage />}
+          />
+
+          <Route
+            path="/settings"
+            element={<SettingsPage />}
+          />
+        </Route>
+
+        <Route
+          path="/home"
+          element={
+            <Navigate
+              to="/dashboard"
+              replace
+            />
+          }
+        />
+
+        <Route
+          path="*"
+          element={<NotFoundPage />}
+        />
       </Routes>
     </BrowserRouter>
   );
