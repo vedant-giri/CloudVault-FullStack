@@ -37,7 +37,7 @@ Deployment
 ## Live Demo
 
 Frontend:
-<your-vercel-url>
+https://cloud-vault-full-stack.vercel.app/
 
 Backend:
 https://cloudvault-api-vedant.onrender.com/docs
